@@ -1,0 +1,64 @@
+using UnityEngine;
+
+public class CameraMovement : MonoBehaviour
+{
+    [Header("Reference")]
+    public Transform player;
+    private Vector3 targetPos;
+
+    [Header("Settings")]
+    public float smoothTimeY;
+    public float smoothTimeX;
+    private Vector2 velocity;
+    public Area startingArea;
+
+    [Space]
+
+    public bool enforceBounds;
+    [Tooltip("Updates camera bounds every frame for debugging, more expensive, don't use in final product.")]
+    public bool realTimeBounds;
+
+    private Area currentArea;
+    private Vector3 minValues;
+    private Vector3 maxValues;
+
+    private void Start()
+    {
+        currentArea = startingArea;
+
+        minValues = currentArea.minBounds;
+        maxValues = currentArea.maxBounds;
+    }
+
+    private void Update()
+    {
+        targetPos = player.position;
+        float posX = Mathf.SmoothDamp(transform.position.x, targetPos.x, ref velocity.x, smoothTimeX);
+        float posY = Mathf.SmoothDamp(transform.position.y, targetPos.y, ref velocity.y, smoothTimeY);
+
+        transform.position = new Vector3(posX, posY, transform.position.z);
+
+        if (enforceBounds)
+        {
+            if (realTimeBounds)
+            {
+                minValues = currentArea.minBounds;
+                maxValues = currentArea.maxBounds;
+            }
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minValues.x, maxValues.x),
+                                             Mathf.Clamp(transform.position.y, minValues.y, maxValues.y),
+                                             Mathf.Clamp(transform.position.z, minValues.z, maxValues.z));
+        }
+    }
+
+    /// <param name="area">The new area to change to.</param>
+    public void ChangeBounds(Area area)
+    {
+        currentArea = area;
+
+        minValues = area.minBounds;
+        maxValues = area.maxBounds;
+
+        Debug.Log(transform.name + ": Bounds changed to " + area.areaName);
+    }
+}
