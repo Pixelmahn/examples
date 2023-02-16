@@ -1,0 +1,407 @@
+package wtne;
+
+import java.util.Arrays;
+
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Bee;
+import org.bukkit.entity.Endermite;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Silverfish;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
+
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
+
+public class Power implements Listener {
+	
+	Main plugin;
+	
+	public Power(Main main) {
+		plugin = main;
+	}
+	
+	@EventHandler
+	public void onPlayerClicks(PlayerInteractEvent event) {
+	    Player player = event.getPlayer();
+	    Action action = event.getAction();
+	    Block block = event.getClickedBlock();
+	    ItemStack item = event.getItem();
+	    if (action.equals(Action.RIGHT_CLICK_BLOCK)) {
+	    	if(player.hasPermission("group.med") || player.hasPermission("group.medapp")) {
+		    	if (block != null && block.getType() == Material.ORANGE_TULIP) {
+		    		if(Math.random() <= 0.50){
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.ORANGE_TULIP);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fShriveled Burnet"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier1));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		} else if(Math.random() <= 0.50){
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.ORANGE_TULIP);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fSmall Burnet"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier2));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		} else {
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.ORANGE_TULIP);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fBurnet"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier3));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		}
+		    	}
+		    	if (block != null && block.getType() == Material.DANDELION) {
+		    		if(Math.random() <= 0.50){
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.DANDELION);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fShriveled Goldenrod"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier1));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		} else if(Math.random() <= 0.50){
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.DANDELION);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fSmall Goldenrod"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier2));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		} else {
+		    			block.setType(Material.AIR);
+			    		ItemStack herb = new ItemStack(Material.DANDELION);
+			    		ItemMeta herbMeta = herb.getItemMeta();
+			    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fGoldenrod"));
+			    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier3));
+						herb.setItemMeta(herbMeta);
+						player.getInventory().addItem(herb);
+						return;
+		    		}
+		    	}
+	    	if (block != null && block.getType() == Material.COBWEB) {
+	    		if(Math.random() <= 0.50){
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.COBWEB);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fLoose Cobweb"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier1));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+					return;
+	    		} else if(Math.random() <= 0.50){
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.COBWEB);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fSmall Cobweb"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier2));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+					return;
+	    		} else {
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.COBWEB);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fCobweb"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier3));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+					return;
+	    		}
+	    	}
+	    	if (block != null && block.getType() == Material.MOSSY_COBBLESTONE) {
+	    		if(Math.random() <= 0.50){
+	    			block.setType(Material.COBBLESTONE);
+		    		ItemStack herb = new ItemStack(Material.LIME_DYE);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fMoss"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier1));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		} else if(Math.random() <= 0.50){
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.LIME_DYE);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fMoss"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier2));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		} else {
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.LIME_DYE);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fMoss"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier3));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		}
+	    	}
+	    	if (block != null && block.getType() == Material.SWEET_BERRY_BUSH) {
+	    		if(Math.random() <= 0.50){
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.SWEET_BERRIES);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fShriveled Deathberries"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier1));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		} else if(Math.random() <= 0.50){
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.SWEET_BERRIES);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fSmall Deathberries"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier2));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		} else {
+	    			block.setType(Material.AIR);
+		    		ItemStack herb = new ItemStack(Material.SWEET_BERRIES);
+		    		ItemMeta herbMeta = herb.getItemMeta();
+		    		herbMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&fDeathberries"));
+		    		herbMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&7&oHerb"), " ", plugin.tier3));
+					herb.setItemMeta(herbMeta);
+					player.getInventory().addItem(herb);
+	    		}
+	    	}
+	    	if(player.isSneaking()) {
+	    		if (block != null && block.getType() != Material.AIR) {
+	    			if(player.hasPermission("group.med") || player.hasPermission("group.medapp")) {
+	    				if(player.getInventory().getItemInMainHand().getType() == (Material.COBWEB)) {
+	    					if(plugin.bleeding.get(player.getUniqueId()) == true) {
+	    						if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Shriveled")) {
+		    						if(Math.random() <= 0.60){
+		    							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cThe herb crumbles beneath your paws")));
+		    						} else {
+		    							plugin.bleeding.put(player.getUniqueId(), false);
+			    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+			    						plugin.createBoard(player);
+		    						}
+		    					} else if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Small")) {
+		    						plugin.bleeding.put(player.getUniqueId(), false);
+		    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+		    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+		    						plugin.createBoard(player);
+		    					} else {
+		    						plugin.bleeding.put(player.getUniqueId(), false);
+		    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+		    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+		    						plugin.createBoard(player);
+		    						player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 0));
+		    					}
+	    					} else {
+	    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou are not hurt!")));
+	    					}
+	    				}
+	    				if(player.getInventory().getItemInMainHand().getType() == (Material.DANDELION)) {
+	    					if(plugin.wounds.get(player.getUniqueId()) == true) {
+	    						if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Shriveled")) {
+		    						if(Math.random() <= 0.60){
+		    							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cThe herb crumbles beneath your paws")));
+		    						} else {
+		    							plugin.wounds.put(player.getUniqueId(), false);
+			    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+			    						plugin.createBoard(player);
+		    						}
+		    					} else if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Small")) {
+		    						plugin.wounds.put(player.getUniqueId(), false);
+		    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+		    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+		    						plugin.createBoard(player);
+		    					} else {
+		    						plugin.wounds.put(player.getUniqueId(), false);
+		    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+		    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed yourself of your ailments!")));
+		    						plugin.createBoard(player);
+		    						player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 0));
+		    					}
+	    					} else {
+	    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou are not hurt!")));
+	    					}
+	    				}
+	    			if(player.getInventory().getItemInMainHand().getType() == (Material.SWEET_BERRIES)) {
+	    				if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Shriveled")) {
+    						if(Math.random() <= 0.60){
+    							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+	    						player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cThe herb crumbles beneath your paws")));
+    						} else {
+    							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+    		    				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou have eaten some deathberries!")));
+    		    				plugin.poison.put(player.getUniqueId(), true);
+    		    				player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 1200, 2));
+    		    				plugin.createBoard(player);
+    						}
+    					} else if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Small")) {
+    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+    	    				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou have eaten some deathberries!")));
+    	    				plugin.poison.put(player.getUniqueId(), true);
+    	    				player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 1200, 3));
+    	    				plugin.createBoard(player);
+    					} else {
+    						player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+    	    				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou have eaten some deathberries!")));
+    	    				plugin.poison.put(player.getUniqueId(), true);
+    	    				player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 1200, 4));
+    	    				plugin.createBoard(player);
+    					}
+    				}
+	    			if(player.getInventory().getItemInMainHand().getType() == (Material.ORANGE_TULIP)) {
+	    				player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+	    				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou have eaten some burnet!")));
+	    				plugin.poison.put(player.getUniqueId(), true);
+	    				player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 6000, 0));
+	    				plugin.createBoard(player);
+    				}
+	    		}
+	    	}
+	    }
+	}
+	
+	@EventHandler
+	public void onPlayerClickEntity(PlayerInteractEntityEvent e) {
+		Player p = e.getPlayer();
+		Entity target = e.getRightClicked();
+		if(target.getType().equals(EntityType.PLAYER)) {
+			if(p.hasPermission("group.med") || p.hasPermission("group.medapp")) {
+				if(p.getInventory().getItemInMainHand().getType() == (Material.COBWEB)) {
+					if(plugin.bleeding.get(target.getUniqueId()) == true) {
+						if(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Shriveled")) {
+							if(Math.random() <= 0.60){
+								p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+	    						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cThe herb crumbles beneath your paws")));
+							} else {
+								plugin.bleeding.put(target.getUniqueId(), false);
+								p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+								p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+								plugin.createBoard((Player) target);
+							}
+						} else if(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Small")) {
+							plugin.bleeding.put(target.getUniqueId(), false);
+							p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+							plugin.createBoard((Player) target);
+						} else {
+							plugin.bleeding.put(target.getUniqueId(), false);
+							p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+							plugin.createBoard((Player) target);
+						}
+					} else {
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &ahas already been healed!")));
+					}
+				}
+				if(p.getInventory().getItemInMainHand().getType() == (Material.DANDELION)) {
+					if(plugin.wounds.get(target.getUniqueId()) == true) {
+						if(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Shriveled")) {
+							if(Math.random() <= 0.60){
+								p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+	    						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cThe herb crumbles beneath your paws")));
+							} else {
+								plugin.wounds.put(target.getUniqueId(), false);
+								p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+								p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+								plugin.createBoard((Player) target);
+							}
+						} else if(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains("Small")) {
+							plugin.wounds.put(target.getUniqueId(), false);
+							p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+							plugin.createBoard((Player) target);
+						} else {
+							plugin.wounds.put(target.getUniqueId(), false);
+							p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&aYou have healed " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &aof their ailments!")));
+							plugin.createBoard((Player) target);
+						}
+					} else {
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &ahas already been healed!")));
+					}
+				}
+			if(p.getInventory().getItemInMainHand().getType() == (Material.SWEET_BERRIES)) {
+				p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou have given " + plugin.userprefix.get(target.getUniqueId()) + plugin.usersuffix.get(target.getUniqueId()) + " &cdeathberries!")));
+				((Player) target).spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.translateAlternateColorCodes('&', "&acYou have been poisoned by another player!")));
+				plugin.poison.put(target.getUniqueId(), true);
+				((Player) target).addPotionEffect(new PotionEffect(PotionEffectType.POISON, 1200, 2));
+				plugin.createBoard((Player) target);
+			}
+		} else {
+			return;
+		}
+	}
+	
+	@EventHandler
+	public void onEntityDamage(EntityDamageByEntityEvent e){
+		Entity damager = e.getDamager();
+		Entity victim = e.getEntity();
+		if(damager instanceof Player) {
+			if(victim instanceof Player) {
+				PlayerInventory inv = ((Player) damager).getInventory();
+				if (inv.getItemInMainHand().getType() != null && inv.getItemInMainHand().getType() == (Material.QUARTZ)) {
+					if(Math.random() <= plugin.getConfig().getDouble("chances.player")){
+						plugin.bleeding.put(victim.getUniqueId(), true);
+						plugin.createBoard((Player) victim);
+						return;
+						}
+					}
+				}
+			}
+		if(damager instanceof Bee) {
+			if(victim instanceof Player) {
+				if(Math.random() <= plugin.getConfig().getDouble("chances.bee")){
+					plugin.beestings.put(victim.getUniqueId(), true);
+					plugin.createBoard((Player) victim);
+					return;
+					}
+				}
+			}
+		}
+	
+	@EventHandler
+	public void onConsume(PlayerItemConsumeEvent event) {
+		Player player = event.getPlayer();
+		if(event.getItem().getType() == Material.COOKED_COD) {
+			if(Math.random() <= 0.25){
+				plugin.poison.put(player.getUniqueId(), true);
+				plugin.createBoard(player);
+				return;
+			}
+		}
+	}
+	
+	public void onSprint(PlayerToggleSprintEvent event) {
+        Player p = event.getPlayer();
+        if(p.hasPermission("group.shadowclan") || p.hasPermission("group.windclan") || p.hasPermission("group.skyclan")) {
+        	p.setExhaustion(0.3f);
+        }
+	}
+}
