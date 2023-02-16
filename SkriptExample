@@ -1,0 +1,51 @@
+options:
+    Broadcast: &8&l<<##7e7e7e>&l< <##db7394>&lEvent <##7e7e7e>&l>&8&l>
+
+on right click on cat:
+    if {leaf.%entity%} = true:
+        if player has permission "group.kit":
+            send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Come back when you're a little older. I'll be able to train you then!" to the player
+        if player has permission "group.med" or "group.dep" or "group.leader" or "group.warrior":
+            send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r I did a fine job, wouldn't you agree?" to the player
+        if player has permission "group.app":
+            if {cooldown::*} contains the player:
+                send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r You already trained today! Come back at sunrise." to the player
+            if {cooldown::*} does not contain the player:
+                if {training.%player%} < 7:
+                    if {quest.%player%} is not set:
+                        send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Are you here to start your training &lDay %{training.%player%}%&f? To start your day, send &aYES&r into the chat. Or type &cNO&r to exit." to the player
+                        set {quest.%player%} to "leaf"
+                if {training.%player%} = 7:
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Go complete Pouncepaw's quest to finish your assessment!" to the player
+                if {quest.%player%} = "fallen":
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Ah yes, the dead fallen tree. Quite a spooky place if you ask me! The tree is a good place for hunting, since mice like to scavenge around here." to the player
+                    wait 11 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Now about the other landmarks, the &lMushroom Tree&r (425 72 -1004) is a large tree with mushrooms sprouting out of it. Many herbs like to grow around it, and you can also find the occassional sparrow's nest in it's branches." to the player
+                    wait 11 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r The &lAbandoned Cabin&r (327 92 -1458) is a huge, broken down cabin in the middle of our territory. There you will be able to find lots of mice, but beware! Badgers also like to hang around the cabin." to the player
+                    wait 11 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r The &lMossy Rocks &r (440 72 -917) are a group of large rocks with moss growing on every inch of them. Besides being a cool view, the mossy rocks can also help you find your way back to camp if you follow the river." to the player
+                    wait 11 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Well that about wraps up your Day 1, %{names.%uuid of player%}%! Make sure to check out the other landmarks, since you'll need to find them on your assessment. Come back to me or Sandprance tommorow for your Day 2! Because this is your first time, I'll help you get back to camp." to the player
+                    send "{@Broadcast} &bDay 1 &rCompleted! You may train again tommorow in-game." to the player
+                    teleport the player to location at (284, 53, -696) in world "VOTS2"
+                    teleport the entity to location at (284, 53, -696) in world "VOTS2"
+                    set {training.%player%} to 2
+                    add the player to {cooldown::*}
+                    delete {quest.%player%}
+                if {quest.%player%} = "mushroom":
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Ah yes, the mushroom tree. There's...not a lot that's special about it, besides the fact that herbs like to grow around here. You can also find the occassional sparrow's nest in it's branches." to the player
+                    wait 10 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Now about the other landmarks, the &lDead Fallen Tree&r (481 67 -543) is a large fallen tree with bones jutting out of it. Mice like to scavenger around that area." to the player
+                    wait 10 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r The &lAbandoned Cabin&r (327 92 -1458) is a huge, broken down cabin in the middle of our territory. There you will be able to find lots of mice, but beware! Badgers also like to hang around the cabin." to the player
+                    wait 10 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r The &lMossy Rocks&r (425 72 -1004) are a group of large rocks with moss growing on every inch of them. Besides being a cool view, the mossy rocks can also help you find your way back to camp if you follow the river. We actually passed it on our way here!" to the player
+                    wait 10 seconds
+                    send "&7[<##3fa33f>NPC&7] <##88cd88>Leafthorn &7&l≫&r Well that about wraps up your Day 1, %{names.%uuid of player%}%! Make sure to check out the other landmarks, since you'll need to find them on your assessment. Come back to me or Sandprance tommorow for your Day 2! Because this is your first time, I'll help you get back to camp." to the player
+                    send "{@Broadcast} &bDay 1 &rCompleted! You may train again tommorow in-game." to the player
+                    teleport the player to location at (284, 53, -696) in world "VOTS2"
+                    teleport the entity to location at (284, 53, -696) in world "VOTS2"
+                    set {training.%player%} to 2
+                    add the player to {cooldown::*}
+                    delete {quest.%player%}
